@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+  --font-sans: "Poppins", sans-serif;
+}
+
+:root {
+  font-family: "Poppins", sans-serif;
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #4F46E5; /* Indigo-600 - Premium Primary */
+  --color-primary-content: #ffffff;
+  --color-secondary: #0D9488; /* Teal-600 - Professional Secondary */
+  --color-secondary-content: #ffffff;
+  --color-accent: #F59E0B; /* Amber-500 - Warm Accent */
+  --color-accent-content: #1f2937;
+  --color-neutral: #1F2937; /* Gray-800 */
+  --color-neutral-content: #ffffff;
+  
+  --color-base-100: #ffffff;
+  --color-base-200: #F3F4F6; /* Cool Gray 100 */
+  --color-base-300: #E5E7EB; /* Cool Gray 200 */
+  --color-base-content: #1f2937;
+
+  --color-info: #0ea5e9;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  --color-primary: #6366F1; /* Indigo-500 - Brighter for Dark Mode */
+  --color-primary-content: #ffffff;
+  --color-secondary: #14B8A6; /* Teal-500 */
+  --color-secondary-content: #ffffff;
+  --color-accent: #FBBF24; /* Amber-400 */
+  --color-accent-content: #1f2937;
+  --color-neutral: #1F2937; /* Gray-800 */
+  --color-neutral-content: #ffffff;
+
+  --color-base-100: #0f172a; /* Slate-900 - Deep, rich background */
+  --color-base-200: #1e293b; /* Slate-800 */
+  --color-base-300: #334155; /* Slate-700 */
+  --color-base-content: #f8fafc;
+  
+  --color-info: #38bdf8;
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+}
