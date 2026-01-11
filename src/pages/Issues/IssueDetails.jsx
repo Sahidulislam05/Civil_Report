@@ -75,7 +75,7 @@ export default function IssueDetails() {
   /* ================= BOOST ================= */
   const handleBoost = async () => {
     try {
-      const res = await axiosSecure.post(`/issues/${id}/boost-checkout`);
+      const res = await axiosSecure.post(`/issues/${id}/boost-checkout-bd`);
       window.location.href = res.data.url;
     } catch (err) {
       toast.error(err.response?.data?.error || "Boost failed");
@@ -158,12 +158,16 @@ export default function IssueDetails() {
 
             {/* Key Information / Specifications Section */}
             <div className="mt-8 pt-6 border-t border-base-200">
-              <h3 className="text-lg font-bold mb-4 text-secondary">Key Information</h3>
+              <h3 className="text-lg font-bold mb-4 text-secondary">
+                Key Information
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex items-center gap-3 p-3 bg-base-200 rounded-lg">
                   <FaMapMarkerAlt className="text-primary text-xl" />
                   <div>
-                    <p className="text-xs text-base-content/60 font-semibold uppercase">Location</p>
+                    <p className="text-xs text-base-content/60 font-semibold uppercase">
+                      Location
+                    </p>
                     <p className="font-medium">{issue.location}</p>
                   </div>
                 </div>
@@ -172,21 +176,33 @@ export default function IssueDetails() {
                     <span className="text-xs font-bold px-1">CAT</span>
                   </div>
                   <div>
-                    <p className="text-xs text-base-content/60 font-semibold uppercase">Category</p>
+                    <p className="text-xs text-base-content/60 font-semibold uppercase">
+                      Category
+                    </p>
                     <p className="font-medium">{issue.category}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-base-200 rounded-lg">
                   <FaArrowUp className="text-success text-xl" />
                   <div>
-                    <p className="text-xs text-base-content/60 font-semibold uppercase">Community Support</p>
-                    <p className="font-medium">{issue.upvoteCount || 0} Votes</p>
+                    <p className="text-xs text-base-content/60 font-semibold uppercase">
+                      Community Support
+                    </p>
+                    <p className="font-medium">
+                      {issue.upvoteCount || 0} Votes
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-3 bg-base-200 rounded-lg">
-                  <div className={`w-3 h-3 rounded-full ${issue.status === 'resolved' ? 'bg-success' : 'bg-info'}`}></div>
+                  <div
+                    className={`w-3 h-3 rounded-full ${
+                      issue.status === "resolved" ? "bg-success" : "bg-info"
+                    }`}
+                  ></div>
                   <div>
-                    <p className="text-xs text-base-content/60 font-semibold uppercase">Status</p>
+                    <p className="text-xs text-base-content/60 font-semibold uppercase">
+                      Status
+                    </p>
                     <p className="font-medium capitalize">{issue.status}</p>
                   </div>
                 </div>
@@ -268,16 +284,18 @@ export default function IssueDetails() {
           >
             <div className="flex justify-between items-center mb-6">
               <span
-                className={`badge badge-lg ${issue.status === "resolved"
-                  ? "badge-success text-white"
-                  : "badge-info text-white"
-                  } capitalize px-4 py-3`}
+                className={`badge badge-lg ${
+                  issue.status === "resolved"
+                    ? "badge-success text-white"
+                    : "badge-info text-white"
+                } capitalize px-4 py-3`}
               >
                 {issue.status}
               </span>
               <span
-                className={`badge badge-lg badge-outline capitalize ${issue.priority === "high" ? "text-error border-error" : ""
-                  }`}
+                className={`badge badge-lg badge-outline capitalize ${
+                  issue.priority === "high" ? "text-error border-error" : ""
+                }`}
               >
                 {issue.priority} Priority
               </span>
@@ -285,8 +303,9 @@ export default function IssueDetails() {
 
             <div className="grid grid-cols-1 gap-3">
               <button
-                className={`btn btn-primary w-full ${hasUpvoted ? "btn-disabled" : ""
-                  }`}
+                className={`btn btn-primary w-full ${
+                  hasUpvoted ? "btn-disabled" : ""
+                }`}
                 onClick={() => {
                   if (!user) navigate("/login");
                   else upvoteMutation.mutate();

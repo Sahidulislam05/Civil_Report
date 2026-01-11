@@ -41,7 +41,7 @@ const Profile = () => {
 
   const handleSubscribe = async () => {
     try {
-      const res = await axiosSecure.post("/create-checkout-session");
+      const res = await axiosSecure.post("/create-checkout-session-bd");
       window.location.replace(res.data.url);
     } catch (err) {
       Swal.fire({
@@ -146,7 +146,9 @@ const Profile = () => {
           {/* Edit Profile Button */}
           <div className="w-full px-6 mt-4">
             <button
-              onClick={() => document.getElementById("edit_profile_modal").showModal()}
+              onClick={() =>
+                document.getElementById("edit_profile_modal").showModal()
+              }
               className="btn btn-outline w-full"
             >
               Edit Profile
@@ -159,10 +161,11 @@ const Profile = () => {
               <button
                 onClick={handleSubscribe}
                 disabled={userInfo?.blocked}
-                className={`w-full py-2 rounded-lg text-white ${userInfo?.blocked
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-blue-600 hover:bg-blue-800"
-                  }`}
+                className={`w-full py-2 rounded-lg text-white ${
+                  userInfo?.blocked
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-blue-600 hover:bg-blue-800"
+                }`}
               >
                 Subscribe 1000tk
               </button>
@@ -176,7 +179,9 @@ const Profile = () => {
         <div className="modal-box">
           <h3 className="font-bold text-lg">Edit Profile</h3>
           <form method="dialog">
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+              ✕
+            </button>
           </form>
 
           <form
@@ -193,22 +198,22 @@ const Profile = () => {
                 // await axiosSecure.patch('/user/profile', { name: _name, image: _photoURL });
 
                 Swal.fire({
-                  icon: 'success',
-                  title: 'Profile Updated',
-                  text: 'Your profile has been updated successfully.'
+                  icon: "success",
+                  title: "Profile Updated",
+                  text: "Your profile has been updated successfully.",
                 });
 
                 // Close modal
                 document.getElementById("edit_profile_modal").close();
 
                 // Reload window or invalidate query to refresh data if using backend data
-                // window.location.reload(); 
+                // window.location.reload();
               } catch (error) {
                 // console.error(error);
                 Swal.fire({
-                  icon: 'error',
-                  title: 'Update Failed',
-                  text: error.message
+                  icon: "error",
+                  title: "Update Failed",
+                  text: error.message,
                 });
               }
             }}
@@ -216,13 +221,27 @@ const Profile = () => {
           >
             <div className="form-control">
               <label className="label">Name</label>
-              <input name="name" type="text" defaultValue={user?.displayName} className="input input-bordered w-full" required />
+              <input
+                name="name"
+                type="text"
+                defaultValue={user?.displayName}
+                className="input input-bordered w-full"
+                required
+              />
             </div>
             <div className="form-control">
               <label className="label">Photo URL</label>
-              <input name="photoURL" type="text" defaultValue={user?.photoURL} className="input input-bordered w-full" required />
+              <input
+                name="photoURL"
+                type="text"
+                defaultValue={user?.photoURL}
+                className="input input-bordered w-full"
+                required
+              />
             </div>
-            <button type="submit" className="btn btn-primary w-full">Update Data</button>
+            <button type="submit" className="btn btn-primary w-full">
+              Update Data
+            </button>
           </form>
         </div>
       </dialog>
