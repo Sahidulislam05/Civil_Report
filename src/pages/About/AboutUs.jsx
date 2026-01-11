@@ -22,7 +22,7 @@ const teamMembers = [
 
 export default function AboutUs() {
   return (
-    <div className="mt-1 w-11/12 mx-auto px-4 py-16">
+    <div className="mt-10 w-11/12 mx-auto px-4 py-16">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

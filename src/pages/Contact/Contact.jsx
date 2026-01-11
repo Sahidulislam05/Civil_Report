@@ -5,7 +5,7 @@ import { Link } from "react-router";
 
 export default function Contact() {
   return (
-    <section id="contact" className="pb-24 pt-10 bg-base-100 text-base-content">
+    <section id="contact" className="pb-24 mt-24 bg-base-100 text-base-content">
       <div className="container mx-auto px-6">
         {/* Heading */}
         <motion.div

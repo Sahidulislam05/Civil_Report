@@ -37,7 +37,7 @@ export default function AllIssues() {
   });
 
   return (
-    <div className="py-12 bg-base-200 min-h-screen mt-1">
+    <div className="py-12 bg-base-200 min-h-screen mt-12">
       {/* Citizens Voice Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
