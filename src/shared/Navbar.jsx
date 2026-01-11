@@ -21,16 +21,11 @@ const Navbar = () => {
     else setIsScrolled(false);
   });
 
-  // Dynamic Text Color:
-  // - On Home: White at top (for dark banner), Base Content when scrolled (for white/dark nav bg)
-  // - Other Pages: Always Base Content
-  const textColorClass = isHome && !isScrolled ? "text-white" : "text-base-content";
+  const textColorClass =
+    isHome && !isScrolled ? "text-white" : "text-base-content";
 
-  // Mobile Dropdown Button Color:
-  // Needs to be visible against the background. 
-  // At top of home (transparent bg): White.
-  // Scrolled or other pages: Base Content.
-  const mobileBtnClass = isHome && !isScrolled ? "text-white" : "text-base-content";
+  const mobileBtnClass =
+    isHome && !isScrolled ? "text-white" : "text-base-content";
 
   const navLinks = [
     { path: "/", label: "Home" },
@@ -50,15 +45,17 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
       {/* Background Layer with Framer Motion for Blur/Opacity */}
       <motion.div
-        className="absolute inset-0 bg-base-100/80 backdrop-blur-xl shadow-sm supports-[backdrop-filter]:bg-base-100/60"
+        className="absolute inset-0 bg-base-100/80 backdrop-blur-xl shadow-sm supports-backdrop-filter:bg-base-100/60"
         initial={false}
         animate={{
-          opacity: isHome ? (isScrolled ? 1 : 0) : 1, // Be transparent at top of Home, solid elsewhere
+          opacity: isHome ? (isScrolled ? 1 : 0) : 1,
         }}
         transition={{ duration: 0.3 }}
       />
 
-      <div className={`navbar container mx-auto px-4 lg:px-8 py-3 relative z-10 ${textColorClass}`}>
+      <div
+        className={`navbar container mx-auto px-4 lg:px-8 py-3 relative z-10 ${textColorClass}`}
+      >
         {/* LOGO */}
         <div className="navbar-start">
           <div className="dropdown lg:hidden">
@@ -71,7 +68,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-xl bg-base-100/95 backdrop-blur-md rounded-box w-52 border border-base-content/10 text-base-content"
+              className="menu menu-sm dropdown-content mt-3 z-1 p-2 shadow-xl bg-base-100/95 backdrop-blur-md rounded-box w-52 border border-base-content/10 text-base-content"
             >
               {navLinks.map((link) => (
                 <li key={link.path}>
@@ -92,7 +89,7 @@ const Navbar = () => {
             className="flex items-center gap-2 text-2xl font-bold hover:opacity-80 transition-opacity"
           >
             {/* Gradient Text for Logo Only */}
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent">
               CivilReport
             </span>
           </Link>
@@ -106,9 +103,10 @@ const Navbar = () => {
                 <NavLink
                   to={link.path}
                   className={({ isActive }) =>
-                    `px-4 py-2 rounded-lg font-medium transition-colors ${isActive
-                      ? "bg-primary/10 text-primary"
-                      : isHome && !isScrolled
+                    `px-4 py-2 rounded-lg font-medium transition-colors ${
+                      isActive
+                        ? "bg-primary/10 text-primary"
+                        : isHome && !isScrolled
                         ? "hover:bg-white/20 hover:text-white text-white"
                         : "hover:bg-base-200/50 hover:text-primary"
                     }`
@@ -131,9 +129,11 @@ const Navbar = () => {
             {theme === "dark" ? (
               <Sun className="w-5 h-5 text-yellow-500" />
             ) : (
-              // If transparent home, show white moon? No, gray usually fine, but if bg is dark...
-              // If text is white, moon should be white or light.
-              <Moon className={`w-5 h-5 ${isHome && !isScrolled ? "text-white" : "text-gray-500"}`} />
+              <Moon
+                className={`w-5 h-5 ${
+                  isHome && !isScrolled ? "text-white" : "text-gray-500"
+                }`}
+              />
             )}
           </button>
 
@@ -143,8 +143,11 @@ const Navbar = () => {
               <div
                 tabIndex={0}
                 role="button"
-                className={`btn btn-ghost btn-circle avatar border-2 transition-colors ${isHome && !isScrolled ? "border-white/50" : "border-primary/20 hover:border-primary"
-                  }`}
+                className={`btn btn-ghost btn-circle avatar border-2 transition-colors ${
+                  isHome && !isScrolled
+                    ? "border-white/50"
+                    : "border-primary/20 hover:border-primary"
+                }`}
                 title={user.displayName}
               >
                 <div className="w-10 rounded-full">
@@ -159,11 +162,12 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="mt-3 z-[1] p-2 shadow-xl menu menu-sm dropdown-content bg-base-100/95 backdrop-blur-md rounded-box w-52 border border-base-content/10 text-base-content"
+                className="mt-3 z-1 p-2 shadow-xl menu menu-sm dropdown-content bg-base-100/95 backdrop-blur-md rounded-box w-52 border border-base-content/10 text-base-content"
               >
                 <li className="menu-title px-4 py-2 border-b border-base-content/10 mb-2">
-                  <span className="font-bold text-base-content truncate block max-w-full">{user.displayName}</span>
-                  <span className="text-xs font-normal opacity-70 truncate block max-w-full">{user.email}</span>
+                  <span className="font-bold text-base-content truncate block max-w-full">
+                    {user.displayName}
+                  </span>
                 </li>
                 <li>
                   <Link to={getDashboardLink()} className="flex gap-2">
@@ -191,7 +195,10 @@ const Navbar = () => {
               <Link to="/login" className="btn btn-primary btn-sm px-6">
                 Login
               </Link>
-              <Link to="/register" className={`btn btn-ghost btn-sm hidden sm:inline-flex ${mobileBtnClass}`}>
+              <Link
+                to="/register"
+                className={`btn btn-ghost btn-sm hidden sm:inline-flex ${mobileBtnClass}`}
+              >
                 Register
               </Link>
             </div>
